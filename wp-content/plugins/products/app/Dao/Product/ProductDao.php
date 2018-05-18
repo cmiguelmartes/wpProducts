@@ -8,7 +8,11 @@ class ProductDao{
 	{
 		try{
 			foreach ($listProducts as $key => $product) {
-    			$newProduct = new Product();
+                $newProduct = Product::find($product->id);
+                if($newProduct == null)
+                {
+                    $newProduct = new Product();
+                }
     			$newProduct->product_id = $product->id;
     			$newProduct->code = $product->codigo;
     			$newProduct->name = $product->nombre;
